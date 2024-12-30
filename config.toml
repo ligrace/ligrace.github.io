@@ -1,0 +1,43 @@
+title = "Grace Li"
+description = "personal website"
+default_language = "en"
+
+# The URL the site will be built for
+base_url = "https://ligrace.github.io"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Note that this also minifies CSS/JS
+minify_html = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+# Anpu related options
+theme = "anpu"
+taxonomies = [
+    { name = "categories" },
+    { name = "tags" },
+]
+
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+extra_syntaxes_and_themes = ["themes"]
+highlight_code = true
+highlight_theme = "night_owl"
+
+[extra]
+# Put all your custom variables here
+site_name = "Quickstart site"
+anpu_menu_links = [
+    { url = "$BASE_URL/", name = "About" },
+    { url = "$BASE_URL/projects/", name = "Projects" },
+    { url = "$BASE_URL/writing/", name = "Writing" },
+    { url = "$BASE_URL/art/", name = "Art" },
+]
+anpu_date_format = "%B %e, %Y"

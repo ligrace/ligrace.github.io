@@ -1,0 +1,51 @@
+{% macro page_info(page) %}
+    <div class="article-info">
+        <div class="article-taxonomies">
+            {% if page.taxonomies.categories %}
+                <ul class="article-categories">
+                    {% for cat in page.taxonomies.categories %}
+                    <li><a href="{{ get_taxonomy_url(kind="categories", name=cat) | safe }}">{{ cat }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if page.taxonomies.tags %}
+                <div class="article-tags">
+                    {% for tag in page.taxonomies.tags %}
+                    <a class="internal-link" href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">{{ tag }}</a>{% if not loop.last %},&nbsp;{% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro page_info %}
+
+{% macro page_listing(page) %}
+    <div class="">
+        <a href="{{ page.permalink }}" class="plain">
+        <h2>{{ page.title }}</h2>
+        <div class="muted small pb">
+            <time datetime="">{{ page.date | date(format=config.extra.anpu_date_format) }}</time>
+        </div>
+        {% if page.summary %}
+        <div class="small muted">
+            {{ page.summary | markdown(inline=true) | safe }}
+        </div>
+        {% endif %}
+        </a>
+    </div>
+{% endmacro page_listing %}
+
+{% macro page_pagination(paginator) %}
+    <div class="pagination">
+        <div class="left pagination-item {% if not paginator.previous %}disabled{% endif %}">
+            {% if paginator.previous %}
+            <a href="{{ paginator.previous }}">To newer posts</a>
+            {% endif %}
+        </div>
+        <div class="right pagination-item {% if not paginator.next %}disabled{% endif %}">
+            {% if paginator.next %}
+            <a href="{{ paginator.next }}">To older posts</a>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro page_pagination %}

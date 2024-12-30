@@ -1,0 +1,11 @@
+<blockquote class="{% if author %}blockquote-with-author{% endif %}">“{{content}}”</blockquote>
+{% if author %}
+<div class="quote-author">{{author}}</div>
+{% endif %}
+{% if source %}
+{% if source_link %}
+<div class="quote-source"><a href="{{ source_link }}" class="plain"> {{ source }}</a></div>
+{% else %}
+<div class="quote-source">{{source}}</div>
+{% endif %}
+{% endif %}

@@ -1,0 +1,34 @@
+{% extends "anpu/templates/index.html" %}
+
+{% block extra_head %}
+{% set custom_css = load_data(path="public/custom.css") %}
+<style>
+  {{custom_css | safe}}
+</style>
+{% set javascript = load_data(path="/footnote.js") %}
+<script type="text/javascript">
+  {{javascript | safe}}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<meta name="theme-color" content="#fbf5ec">
+{% endblock %}
+
+{% block footer %}
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['$$', '$$']]
+    },
+    startup: {
+    ready: () => {
+      console.log('MathJax is loaded, but not yet initialized');
+      console.log(document.getElementsByTagName('content')[0].innerHTML);
+      MathJax.startup.defaultReady();
+      console.log('MathJax is initialized, and the initial typeset is queued');
+    }
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+{% endblock %}

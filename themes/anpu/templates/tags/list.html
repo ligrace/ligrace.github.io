@@ -1,0 +1,13 @@
+{% import "macros/page.html" as page_macros %}
+{% extends "index.html" %}
+
+{% block title %}tags{% endblock title%}
+
+{% block content %}
+<div class="wrap">
+<h1>tags</h1>
+{% for term in terms %}
+<a class="internal-link" href="{{ term.permalink }}">{{ term.name }}</a>{% if not loop.last %},&nbsp;{% endif %}
+{% endfor %}
+</div>
+{% endblock content %}

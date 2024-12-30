@@ -1,0 +1,51 @@
+.callout-icon svg.lucide-info {
+    color: rgb(8, 109, 221)
+}
+
+.callout {
+    overflow: hidden;
+    border-style: solid;
+    border-color: rgba(8, 109, 221, 0.25);
+    border-width: 1px;
+    border-radius: 5px;
+    margin: 1em 0;
+    mix-blend-mode: darken;
+    background-color: rgba(8, 109, 221, 0.1);
+    padding: 12px;
+}
+
+.callout-title {
+    padding: 0px;
+    display: flex;
+    row-gap: 4px;
+    font-size: 16px;
+    color: rgb(8, 109, 221);
+    line-height: 28px;
+}
+
+.callout-icon {
+    flex: 0 0 auto;
+    display: flex;
+    margin-top: 0.15em;
+    align-self: flex-start;
+}
+
+.callout-title-inner {
+    font-weight: 400;
+    margin-left: 12px;
+    color: rgb(8, 109, 221);
+}
+
+// for quotes
+.blockquote-with-author {
+    margin-bottom: 0.5em;
+}
+
+.quote-author {
+    text-align: right;
+}
+
+.quote-source {
+    text-align: right;
+    font-style: italic
+}

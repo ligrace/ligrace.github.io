@@ -1,0 +1,60 @@
+$media-phone: 600px;
+
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, "Inter", "IBM Plex Sans", Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --font-mono: IBM Plex Mono, monospace;
+  --border-radius: 4px;
+  --font-small: 0.875em;
+  --font-smaller: 0.8em;
+  --wrap-wide: 1200px;
+  --wrap-normal: 50em;
+  --input-width: 20em;
+
+  @media (max-width: 860px) {
+    --wrap-normal: 88vw;
+    --wrap-wide: 100vw;
+    --input-width: 100%;
+    .wide {
+      --border-radius: 0;
+    }
+  }
+}
+
+:root {
+  --color-background-primary: #FBFDFF; // previously #FBF5EC
+  --color-background-secondary: rgba(0,0,0,0.05);
+  --color-background-hover: #F8E3E4; // previously hsla(182, 84%, 32%, 0.1)
+  --color-selection: #F8E3E4; // previously hsla(182, 84%, 32%, 0.1)
+
+  --color-primary: hsl(0, 0%, 10%);
+  --color-muted: rgba(90,80,70,.8);
+  --color-faint: #ACA59B;
+
+  // --color-action: hsla(225, 85%, 46%, 1);
+  --color-action: #7a6e9b; //rgba(10, 132, 255, 1)
+  --color-action-muted: hsla(225, 85%, 28%, 0.6)
+  --color-action-faint: hsla(225, 85%, 28%, 0.35)
+
+  --color-outline: rgba(0,0,0,0.1)
+  --color-outline-hover: #d8d8d5;
+  --color-outline-active: #c7c7c4;
+
+}
+
+.theme-dark {
+  --color-background-primary: #2b2b2c;
+  --color-background-secondary: rgba(255,255,255,0.05);
+  --color-selection: hsla(35, 20%, 64%, .2);
+
+  --color-primary: #dad6c6;
+  --color-muted: hsla(35, 5%, 64%, .8);
+  --color-faint: hsla(35, 5%, 64%, .5);
+
+  --color-action: #62aba4; 
+
+  --color-outline: hsla(35, 5%, 64%, .15);
+  --color-outline-hover: hsla(35, 5%, 64%, .25);
+  --color-outline-active: #c7c7c4;
+}
+

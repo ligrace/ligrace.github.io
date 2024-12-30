@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+#footnotes {
+    margin-bottom: 15px;
+}
+
+// footnote fixes
+.footnote-definition {
+    margin-bottom: 15px;
+    font-size: 0.8em;
+}
+
+.footnote-definition p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+sup.footnote-definition-label {
+    color: #f013a6;
+}
+
+sup.footnote-definition-label:before {
+    content: "footnote ";
+}
+
+// tweaks to content
+content img {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-right: 10em;
+}
+
+content h2 {
+    font-weight: 500
+}
+
+h1,h2,h3,h4,h5,h6 {
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+
+a.active-area {
+    color: #7a6e9b; 
+}
+
+// to be used right before a p element with 18.2
+.pb-remove {
+    padding-bottom: 0;
+    margin-bottom: -8.2px;
+}
+
+// for the LLMs article
+.chatgpt-prompt {
+    background-color: rgba(52,53,65);
+    color: white;
+    padding: 10px;
+    margin-taop: 1em;
+    font-size: 0.75em;
+    border-radius: 5px;
+}
+
+// import the local "shortcodes.scss file"
+@import "shortcodes";

@@ -1,0 +1,82 @@
+{% import "macros/page.html" as page_macros %}
+<!DOCTYPE html>
+<html lang="{% if lang %}{{ lang }}{% else %}en{% endif %}">
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <meta name="description" content="{{ config.description }}">
+
+    {% set css = load_data(path="public/main.css") %}
+    <style>
+        {{css | safe}}
+    </style>
+    <!-- <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}"> -->
+
+    {% if config.generate_feeds %}
+        <link rel="alternate" type={% if "atom.xml" in config.feed_filenames %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filenames[0]) | safe }}">
+    {% endif %}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+</head>
+<body class="theme-light">
+    <nav>
+        <div class="header flex align-center">
+            <span class="flex-grow">
+            <a class="internal-link plain" href="{{ config.base_url }}">{{ config.title }}</a>
+            {% block sidebar_header %}
+            {% for menu_link in config.extra.anpu_menu_links %}
+            {% set link_url = menu_link.url | replace(from="$BASE_URL", to=config.base_url) %}
+                {% if current_url and current_url == link_url %}
+                <span class="mh"><span class="faint">/</span> <a href="{{ link_url }}" class="muted plain active-area">{{ menu_link.name }}</a></span>
+                {% endif %}
+            {% endfor %}
+            {% endblock sidebar_header %}
+            </span>
+
+            <span class="flex-shrink sr">
+            {% block sidebar_header_2 %}
+            {% for menu_link in config.extra.anpu_menu_links %}
+            {% set link_url = menu_link.url | replace(from="$BASE_URL", to=config.base_url) %}
+                {% if current_url and current_url != link_url %}
+                <a href="{{ link_url }}" class="muted plain {% if not loop.first %} ssl {% endif %}">{{ menu_link.name }}</a>
+                {% endif %}
+            {% endfor %}
+            {% endblock sidebar_header_2 %}
+            </span>
+            <!-- <span id="theme-toggle" title="Toggle dark mode">
+                <div class="theme-toggle-slide"></div>
+                <div class="theme-toggle-switch"></div>
+            </span> -->
+        </div>
+    </nav>
+    <div class="wrapper">
+        <main id="main" tabindex="-1">
+            {% block content %}
+                <div class="wrap">
+                {% if paginator.pages %}
+                {% for page in paginator.pages %}
+                    {{ page_macros::page_listing(page=page) }}
+                {% endfor %}
+                {{ page_macros::page_pagination(paginator=paginator) }}
+                {% else %}
+                {% for page in section.pages %}
+                    {{ page_macros::page_listing(page=page) }}
+                {% endfor %}
+                {% endif %}
+                </div>
+            {% endblock content %}
+        </main>
+    </div>
+</body>
+{% if paginator.pages %}
+{% else %}
+    <!-- Don't load MathJax on the main page -->
+    {% block footer %}
+    {% endblock footer %}
+{% endif %}
+</html>
